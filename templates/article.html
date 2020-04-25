@@ -23,13 +23,60 @@
 
 {% block content %}
 <section id="content" class="body">
+  <article>
+
+    {% if article.image %}  
+    <section class="main_image">
+      <div itemscope itemtype="http://schema.org/ImageObject">
+        {% if article.prev_article %}
+        <a href="{{ SITEURL }}/{{ article.prev_article.url}}" id="prev">
+        {% endif %}
+
+        <img alt="{{ article.title|striptags }}" src="{{ article.image }}" class="image-process-article-image" />
+
+        {% if article.prev_article %}
+        </a>
+        {% endif %}
+
+        <!-- https://schema.org/ImageObject -->
+        <meta itemprop="contentUrl" content="{{ article.image }}"/>
+        <meta itemprop="caption" content="{{ article.title|striptags }}"/>
+        <meta itemprop="dateCreated" content="{{ article.datecreated }}"/>
+        <meta itemprop="datePublished" content="{{ article.locale_date }}"/>
+
+        {% if article.location %}
+        <meta itemprop="contentLocation" content="{{ article.location }}">       
+        {% endif %}  
+
+        {% for author in article.authors %}
+        <meta itemprop="author" content="{{ author }}" />
+        {% endfor %}
+      </div>
+      
+      {% if article.gps %}
+        <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+            <meta itemprop="latitude" content="{{ article.latitude }}" />
+            <meta itemprop="longitude" content="{{ article.longitude }}" />
+        </div>
+      {% endif %}      
+    </section>  
+    {% endif %}
+    
+
+    <div class="entry-content">
+      {{ article.content }}
+    </div><!-- /.entry-content -->
+
+  </article>
+
   <header>
     <h2 class="entry-title">
       <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
          title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
- {% import 'translations.html' as translations with context %}
- {{ translations.translations_for(article) }}
+     {% import 'translations.html' as translations with context %}
+     {{ translations.translations_for(article) }}
   </header>
+
   <footer class="post-info">
     <time class="published" datetime="{{ article.date.isoformat() }}">
       {{ article.locale_date }}
@@ -59,9 +106,27 @@
         {% endfor %}
     </div>
     {% endif %}
+
+
   </footer><!-- /.post-info -->
-  <div class="entry-content">
-    {{ article.content }}
-  </div><!-- /.entry-content -->
+  <nav>
+  
+   {% if article.prev_article %}
+    <div style="float:left">
+           <a href="{{ SITEURL }}/{{ article.prev_article.url}}" id="prev">
+               Previous: {{ article.prev_article.title }}
+           </a>
+    </div>
+   {% endif %}
+   
+   {% if article.next_article %}
+    <div style="float:right">
+           <a href="{{ SITEURL }}/{{ article.next_article.url}}" id="next">
+               Next: {{ article.next_article.title }}
+           </a>
+    </div>
+   {% endif %}
+  </nav>
+
 </section>
 {% endblock %}
