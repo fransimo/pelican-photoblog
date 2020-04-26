@@ -2,13 +2,15 @@
 
 {% block title %}{{ SITENAME }} - Archives{% endblock %}
 
-{% block content %}
-<h1>Archives for {{ SITENAME }}</h1>
 
-<dl>
+{% block content %}
+<section id="content">
+{% block content_title %}{% endblock %}
 {% for article in dates %}
-    <dt>{{ article.locale_date }}</dt>
-    <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+    <a href="{{ SITEURL }}/{{ article.url }}">
+    	<img alt="{{ article.title|striptags }}, {{ article.locale_date }}" src="{{ article.image }}" class="image-process-thumb-square" />
+    </a>
 {% endfor %}
-</dl>
-{% endblock %}
+
+</section>
+{% endblock content %}
