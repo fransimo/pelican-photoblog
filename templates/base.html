@@ -30,6 +30,16 @@
         <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
         {% endif %}
         {% endblock head %}
+
+
+        
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+            body {
+              font-family: 'Inconsolata', monospace;
+            }
+        </style>
+
 </head>
 
 <body id="index" class="home">
