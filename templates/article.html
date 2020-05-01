@@ -32,10 +32,21 @@
         <a href="{{ SITEURL }}/{{ article.prev_article.url}}" id="prev">
         {% endif %}
 
-        <img alt="{{ article.title|striptags }}" src="{{ article.image }}" class="image-process-article-image" />
+        <picture>
+          <source class="original-image" src="{{ article.image }}"
+            srcset="{{ article.image }} 2048w"
+            sizes="98vw"
+            media="(min-width: 2048px)">
+            
+          <img class="image-process-article-pict" src="{{ article.image }}"/>
+        </picture>
 
         {% if article.prev_article %}
         </a>
+
+
+
+
         {% endif %}
 
         <!-- https://schema.org/ImageObject -->
