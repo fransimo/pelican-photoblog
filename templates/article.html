@@ -69,25 +69,18 @@
     </section>  
     {% endif %}
 
-    <nav id="article-navigation" class="art-nav- navigation navigation--inline"><ul class="menu-">
-          {% if article.prev_article %}
-          <li>
-                 <a href="{{ SITEURL }}/{{ article.prev_article.url}}" id="prev">
-                      <i class="fas fa-chevron-left"></i>
-                 </a>
-          </li>
-         {% endif %}
-         <li>
-            <a href="{{ SITEURL }}/"><i class="fas fa-home"></i></a>
-         </li>
-         {% if article.next_article %}
-          <li>
-                 <a href="{{ SITEURL }}/{{ article.next_article.url}}" id="next">
-                     <i class="fas fa-chevron-right"></i>
-                 </a>
-          </li>
-         {% endif %}
-    </ul></nav>
+    <nav id="article-navigation" class="navbar">
+      {% if article.prev_article %}
+      <a href="{{ SITEURL }}/{{ article.prev_article.url}}" id="prev"><i class="fas fa-chevron-left"></i></a>
+      {% endif %}
+
+      <a href="{{ SITEURL }}/"><i class="fas fa-home" alt="home"></i></a>
+      <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"><i class="fas fa-archive" alt="archives"></i></a>
+         
+      {% if article.next_article %}
+      <a href="{{ SITEURL }}/{{ article.next_article.url}}" id="next"><i class="fas fa-chevron-right"></i></a>
+      {% endif %}
+    </nav>
 
     <header>
      <h2 class="entry-title">
