@@ -43,10 +43,6 @@
 
         {% if article.prev_article %}
         </a>
-
-
-
-
         {% endif %}
 
         <!-- https://schema.org/ImageObject -->
@@ -72,6 +68,26 @@
       {% endif %}      
     </section>  
     {% endif %}
+
+    <nav id="article-navigation" class="art-nav- navigation navigation--inline"><ul class="menu-">
+          {% if article.prev_article %}
+          <li>
+                 <a href="{{ SITEURL }}/{{ article.prev_article.url}}" id="prev">
+                      <i class="fas fa-chevron-left"></i>
+                 </a>
+          </li>
+         {% endif %}
+         <li>
+            <a href="{{ SITEURL }}/"><i class="fas fa-home"></i></a>
+         </li>
+         {% if article.next_article %}
+          <li>
+                 <a href="{{ SITEURL }}/{{ article.next_article.url}}" id="next">
+                     <i class="fas fa-chevron-right"></i>
+                 </a>
+          </li>
+         {% endif %}
+    </ul></nav>
 
     <header>
      <h2 class="entry-title">
@@ -119,21 +135,7 @@
     </div>
     {% endif %}
 
-    {% if article.prev_article %}
-    <div style="float:left">
-           <a href="{{ SITEURL }}/{{ article.prev_article.url}}" id="prev">
-               Previous: {{ article.prev_article.title }}
-           </a>
-    </div>
-   {% endif %}
-   
-   {% if article.next_article %}
-    <div style="float:right">
-           <a href="{{ SITEURL }}/{{ article.next_article.url}}" id="next">
-               Next: {{ article.next_article.title }}
-           </a>
-    </div>
-   {% endif %}
+
 
   </footer><!-- /.post-info -->
 

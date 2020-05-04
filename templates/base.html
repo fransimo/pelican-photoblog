@@ -29,6 +29,12 @@
         {% if TAG_FEED_RSS and tag %}
         <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
         {% endif %}
+
+        <link href="/theme/css/fontawesome.css" rel="stylesheet">
+        <link href="/theme/css/brands.css" rel="stylesheet">
+        <link href="/theme/css/solid.css" rel="stylesheet">
+
+
         {% endblock head %}
 
 
@@ -36,26 +42,128 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
             body {
-              font-family: 'Inconsolata', monospace;
-              font-size: 10.5pt;
-            }
+                font-family: 'Inconsolata', monospace;
+                font-size: 10.5pt;
 
+                background: #ffffff;
+
+
+            }
+            
             .main {
-                max-width: 2048px;
                 width: 98%;
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 2048px;
+                margin-left:auto;
+                margin-right:auto;
             }
 
-            .main_image {
-                text-align: center;
-                width: 100%;
+            article {}
+
+            .main_image {      
+                text-align: center; 
             }
 
             .main_image img {
+                object-fit: contain;
                 width: 100%;
                 height: auto;
+                max-height: 95vh;
+                max-width: 98vw;
             }
+
+            .art-nav {
+                  margin:20px;
+                  padding:0;
+                  list-style:none;
+                  width:100%;
+            }
+
+            .art-nav li {
+                display:inline
+            }
+
+            .art-nav li a {
+                text-decoration:none;
+                padding:5px 0;
+                width:100px;
+                background:#000;
+                color:#eee;
+                float:left;
+            }
+
+            .art-nav li a {
+                text-align:center;
+                border-left:1px solid #fff;
+            }
+
+
+            .menu {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              //max-width: 720px;
+              margin: 0 auto;
+              //height: 100vh;
+              list-style: none;
+            }
+
+            .menu li {
+              width: 125px;
+              height: 50px;
+              transition: background-position-x 0.9s linear;
+              text-align: center;
+
+              a {
+                font-size: 22px;
+                color: #777;
+                text-decoration: none;
+                transition: all 0.45s;
+              }
+
+            }
+
+
+            .navigation {
+  background-color: #f0f6ff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation a {
+  display: block;
+  padding: 1.5rem;
+  position: relative;
+  text-decoration: none;
+}
+
+.navigation a:focus::after,
+.navigation a:hover::after {
+  opacity: 1;
+}
+
+.navigation a::after {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.3s;
+  width: 100%;
+}
+
+.navigation--inline ul {
+  display: flex;
+}
+
 
 
 
@@ -64,9 +172,7 @@
 </head>
 
 <body id="index" class="main">
-        <header id="banner" class="body">
-                <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
-        </header><!-- /#banner -->
+
         <nav id="menu"><ul>
         {% for title, link in MENUITEMS %}
             <li><a href="{{ link }}">{{ title }}</a></li>
@@ -79,6 +185,8 @@
         </ul></nav><!-- /#menu -->
         {% block content %}
         {% endblock %}
+
+        
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
                 Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
