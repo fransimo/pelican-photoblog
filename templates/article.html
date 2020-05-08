@@ -34,7 +34,7 @@
 
         <picture>
           <source class="original-image" src="{{ article.image }}"
-            srcset="{{ article.image }} 2048w"
+            srcset="{{ article.image }} {{ article.imagewidth }}w"
             sizes="98vw"
             media="(min-width: 2048px)">
             
@@ -60,10 +60,10 @@
         {% endfor %}
       </div>
       
-      {% if article.gps %}
+      {% if article.gpslatitude %}
         <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
-            <meta itemprop="latitude" content="{{ article.latitude }}" />
-            <meta itemprop="longitude" content="{{ article.longitude }}" />
+            <meta itemprop="latitude" content="{{ article.gpslatitude }}" />
+            <meta itemprop="longitude" content="{{ article.gpslongitude }}" />
         </div>
       {% endif %}      
     </section>  
