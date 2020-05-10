@@ -4,11 +4,11 @@
 
 
 {% block content %}
-<section id="content">
+<section id="content" class="content-thumbs">
 {% block content_title %}{% endblock %}
 {% for article in dates %}
     <a href="{{ SITEURL }}/{{ article.url }}">
-    	<img alt="{{ article.title|striptags }}, {{ article.locale_date }}" src="{{ article.image }}" class="image-process-thumb-square" />
+    	<img alt="{{ article.title|striptags }}, {{ article.locale_date }}" src="{{ article.image }}" class="image-process-thumb-square lazyload" />
     </a>
 {% endfor %}
 

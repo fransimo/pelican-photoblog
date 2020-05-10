@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+
+
+html, body {
+    font-family: 'Inconsolata', monospace;
+    font-size: 15px;
+
+    background: #DDD;
+    padding: 0;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center; 
+}
+
+h1 {
+    font-size: 30px; 
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+h2 {
+    font-size: 20px; 
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.main {
+    width: 98%;
+    max-width: 2048px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+article {}
+
+.main_image {      
+    text-align: center; 
+    padding: 1%;
+    background: #FFF;
+}
+
+.main_image img {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    max-height: 95vh;
+    max-width: 98vw;
+}
+
+
+/* Style the navigation menu */
+.navbar {
+  width: 100%;
+  background-color: #EEE;
+  overflow: auto;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  width: 22%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center; /* If you want the text to be centered */
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+  background-color: #000;
+  color: white;
+}
+
+/* Style the current/active link */
+.navbar a.active {
+  background-color: #4CAF50;
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left; /* If you want the text to be left-aligned on small screens */
+  }
+
+  .content .entry-content{
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: left; 
+    }
+
+    .content .post-info{
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: left; 
+    }
+}
+
+.content, .content-thumbs {
+    max-width: 1224px;
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+    text-align: left; 
+}
+
+.content .entry-title{
+    text-align: left;
+}
+
+.content .entry-content{
+    float: left;
+    width: 48%;
+    max-width: 500px;
+    text-align: left;
+    margin: auto;
+}
+
+.content .post-info{
+    float: right;
+    width: 48%;
+    max-width: 500px;
+    text-align: right;
+    margin: auto;
+}
+
+.content-thumbs {
+    padding: 1%;
+}
+
+.credit {
+    padding: 1%;
+}

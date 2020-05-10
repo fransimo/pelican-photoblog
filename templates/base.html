@@ -30,143 +30,76 @@
         <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
         {% endif %}
 
+
+        <link href="/theme/css/reset.css" rel="stylesheet">
+        <link href="/theme/css/style.css" rel="stylesheet">
+
         <link href="/theme/css/fontawesome.css" rel="stylesheet">
         <link href="/theme/css/brands.css" rel="stylesheet">
         <link href="/theme/css/solid.css" rel="stylesheet">
 
+        <script src="/theme/js/lazysizes.min.js" async=""></script>
 
         {% endblock head %}
-
-
-        
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
-            html, body {
-                font-family: 'Inconsolata', monospace;
-                font-size: 10.5pt;
-
-                background: #DDD;
-                padding: 0;
-                margin: 0;
-                margin-left:auto;
-                margin-right:auto;
-                text-align: center; 
-            }
-            
-            .main {
-                width: 98%;
-                max-width: 2048px;
-                margin-left:auto;
-                margin-right:auto;
-            }
-
-            article {}
-
-            .main_image {      
-                text-align: center; 
-                border-style: solid;
-                border-width: 1px;
-                padding: 1%;
-                background: #FFF;
-            }
-
-            .main_image img {
-                object-fit: contain;
-                width: 100%;
-                height: auto;
-                max-height: 95vh;
-                max-width: 98vw;
-            }
-
-
-            /* Style the navigation menu */
-            .navbar {
-              width: 100%;
-              background-color: #EEE;
-              overflow: auto;
-            }
-
-            /* Navigation links */
-            .navbar a {
-              float: left;
-              padding: 12px;
-              color: black;
-              text-decoration: none;
-              font-size: 15pt;
-              width: 22%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
-              text-align: center; /* If you want the text to be centered */
-            }
-
-            /* Add a background color on mouse-over */
-            .navbar a:hover {
-              background-color: #000;
-              color: white;
-            }
-
-            /* Style the current/active link */
-            .navbar a.active {
-              background-color: #4CAF50;
-            }
-
-            /* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
-            @media screen and (max-width: 500px) {
-              .navbar a {
-                float: none;
-                display: block;
-                width: 100%;
-                text-align: left; /* If you want the text to be left-aligned on small screens */
-              }
-            }
-
-            .content {
-                max-width: 1224px;
-                width: 100%;
-                overflow: auto;
-                border-width: 1px;
-                border-style: solid;
-                margin: auto;
-            }
-
-            .content .entry-title{
-                text-align: left;
-            }
-
-            .content .entry-content{
-                float: left;
-                width: 48%;
-                max-width: 500px;
-                text-align: left;
-                margin: auto;
-            }
-
-            .content .post-info{
-                float: right;
-                width: 48%;
-                max-width: 500px;
-                text-align: right;
-                margin: auto;
-            }
-        </style>
 
 </head>
 
 <body id="index" class="main">
 
-        <nav id="menu"><ul>
-        {% for title, link in MENUITEMS %}
-            <li><a href="{{ link }}">{{ title }}</a></li>
-        {% endfor %}
-        {% if DISPLAY_PAGES_ON_MENU %}
-          {% for p in pages %}
-            <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-          {% endfor %}
-        {% endif %}
-        </ul></nav><!-- /#menu -->
         {% block content %}
         {% endblock %}
 
+
         
-        <footer id="contentinfo" class="body">
+        <section id="extras" class="body">
+            <h2>menu</h2>
+            <nav id="menu"><ul>
+                {% for title, link in MENUITEMS %}
+                    <li><a href="{{ link }}">{{ title }}</a></li>
+                {% endfor %}
+                {% if DISPLAY_PAGES_ON_MENU %}
+                  {% for p in pages %}
+                    <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                  {% endfor %}
+                {% endif %}
+                {% if DISPLAY_CATEGORIES_ON_MENU %}
+                  {% for cat, null in categories %}
+                    <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                  {% endfor %}
+                {% endif %}
+            </ul></nav><!-- /#menu -->
+
+        {% if LINKS %}
+                <div class="blogroll">
+                        <h2>{{ LINKS_WIDGET_NAME | default('links') }}</h2>
+                        <ul>
+                        {% for name, link in LINKS %}
+                            <li><a href="{{ link }}">{{ name }}</a></li>
+                        {% endfor %}
+                        </ul>
+                </div><!-- /.blogroll -->
+        {% endif %}
+        {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
+                <div class="social">
+                        <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>
+                        <ul>
+                            {% if FEED_ALL_ATOM %}
+                            <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            {% endif %}
+                            {% if FEED_ALL_RSS %}
+                            <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate">rss feed</a></li>
+                            {% endif %}
+
+                        {% for name, link in SOCIAL %}
+                            <li><a href="{{ link }}">{{ name }}</a></li>
+                        {% endfor %}
+                        </ul>
+                </div><!-- /.social -->
+        {% endif %}
+        </section><!-- /#extras -->
+
+
+        <footer id="contentinfo" class="body credit">
                 <address id="about" class="vcard body">
                 Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
                 which takes great advantage of <a href="https://www.python.org/">Python</a>.

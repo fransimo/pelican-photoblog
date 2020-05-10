@@ -75,7 +75,7 @@
       {% endif %}
 
       <a href="{{ SITEURL }}/"><i class="fas fa-home" alt="home"></i></a>
-      <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"><i class="fas fa-archive" alt="archives"></i></a>
+      <a href="{{ SITEURL }}/{{ ARCHIVES_SAVE_AS | default('archives.html') }}"><i class="fas fa-archive" alt="archives"></i></a>
          
       {% if article.next_article %}
       <a href="{{ SITEURL }}/{{ article.next_article.url}}" id="next"><i class="fas fa-chevron-right"></i></a>
@@ -100,11 +100,11 @@
 
       <footer class="post-info">
         <time class="published" datetime="{{ article.date.isoformat() }}">
-          {{ article.locale_date }}
+          Published: {{ article.locale_date }}
         </time>
         {% if article.modified %}
         <time class="modified" datetime="{{ article.modified.isoformat() }}">
-          {{ article.locale_modified }}
+          Modified: {{ article.locale_modified }}
         </time>
         {% endif %}
         {% if article.authors %}
