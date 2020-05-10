@@ -51,25 +51,28 @@
 
 
         
-        <section id="extras" class="body">
-            <h2>menu</h2>
-            <nav id="menu"><ul>
-                {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
-                {% endfor %}
-                {% if DISPLAY_PAGES_ON_MENU %}
-                  {% for p in pages %}
-                    <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-                  {% endfor %}
-                {% endif %}
-                {% if DISPLAY_CATEGORIES_ON_MENU %}
-                  {% for cat, null in categories %}
-                    <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                  {% endfor %}
-                {% endif %}
-            </ul></nav><!-- /#menu -->
+        <section id="extras" class="extras">
+            <div class="block">
+                <h2>menu</h2>
+                <nav id="menu"><ul>
+                    {% for title, link in MENUITEMS %}
+                        <li><a href="{{ link }}">{{ title }}</a></li>
+                    {% endfor %}
+                    {% if DISPLAY_PAGES_ON_MENU %}
+                      {% for p in pages %}
+                        <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                      {% endfor %}
+                    {% endif %}
+                    {% if DISPLAY_CATEGORIES_ON_MENU %}
+                      {% for cat, null in categories %}
+                        <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                      {% endfor %}
+                    {% endif %}
+                </ul></nav><!-- /#menu -->
+            </div>
 
         {% if LINKS %}
+            <div class="block" style="text-align: center;">
                 <div class="blogroll">
                         <h2>{{ LINKS_WIDGET_NAME | default('links') }}</h2>
                         <ul>
@@ -78,8 +81,10 @@
                         {% endfor %}
                         </ul>
                 </div><!-- /.blogroll -->
+            </div>
         {% endif %}
         {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
+            <div class="block" style="float: right; text-align: right;">
                 <div class="social">
                         <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>
                         <ul>
@@ -95,6 +100,7 @@
                         {% endfor %}
                         </ul>
                 </div><!-- /.social -->
+            </div>
         {% endif %}
         </section><!-- /#extras -->
 
