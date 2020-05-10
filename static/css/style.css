@@ -5,7 +5,7 @@ html, body {
     font-family: 'Inconsolata', monospace;
     font-size: 15px;
 
-    background: #DDD;
+    background: #999;
     padding: 0;
     margin: 0;
     margin-left:auto;
@@ -25,11 +25,16 @@ h2 {
     padding-top: 10px;
 }
 
+p {
+    padding-bottom: 5px;
+}
+
 .main {
     width: 98%;
     max-width: 2048px;
     margin-left:auto;
     margin-right:auto;
+    background: #EEE;
 }
 
 article {}
@@ -52,7 +57,7 @@ article {}
 /* Style the navigation menu */
 .navbar {
   width: 100%;
-  background-color: #EEE;
+  background-color: #DDD;
   overflow: auto;
 }
 
@@ -102,7 +107,7 @@ article {}
     }
 }
 
-.content, .content-thumbs {
+.content, .content-thumbs, .extras {
     max-width: 1224px;
     width: 100%;
     overflow: auto;
@@ -132,6 +137,19 @@ article {}
 
 .content-thumbs {
     padding: 1%;
+}
+
+.extras {
+    max-width: 800px;
+    width: 80%;
+}
+
+.extras .block{
+    float: left;
+    width: 33.33%;
+    max-width: 500px;
+    text-align: left;
+    margin: auto;
 }
 
 .credit {
