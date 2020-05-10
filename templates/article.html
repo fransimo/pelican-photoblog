@@ -19,6 +19,11 @@
     <meta name="tags" content="{{tag}}" />
   {% endfor %}
 
+  {% if article.image %}  
+  <meta property="og:title" content="{{ article.title|striptags  }}">
+  <meta property="og:image" content="{{ SITEURL }}{{ article.image }}">
+  {% endif %}
+
 {% endblock %}
 
 {% block content %}
