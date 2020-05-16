@@ -107,6 +107,10 @@ article {}
     }
 }
 
+.entry-title, .entry-content, .post-info {
+    padding: 10px;
+}
+
 .content, .content-thumbs, .extras {
     max-width: 1224px;
     width: 100%;
