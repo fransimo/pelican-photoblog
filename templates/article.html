@@ -20,8 +20,8 @@
   {% endfor %}
 
   {% if article.image %}  
-  <meta property="og:title" content="{{ article.title|striptags  }}">
-  <meta property="og:image" content="{{ SITEURL }}{{ article.image }}">
+  <meta property="og:title" content="{{ article.title|striptags  }}" />
+  <meta property="og:image" content="{{ SITEURL }}{{ article.image }}" />
   {% endif %}
 
 {% endblock %}
@@ -80,8 +80,8 @@
       <a href="{{ SITEURL }}/{{ article.prev_article.url}}" ><i class="fas fa-chevron-left"></i></a>
       {% endif %}
 
-      <a href="{{ SITEURL }}/" alt="home"><i class="fas fa-home"></i></a>
-      <a href="{{ SITEURL }}/{{ ARCHIVES_SAVE_AS | default('archives.html') }}" alt="archives"><i class="fas fa-archive"></i></a>
+      <a href="{{ SITEURL }}/"><i class="fas fa-home"></i></a>
+      <a href="{{ SITEURL }}/{{ ARCHIVES_SAVE_AS | default('archives.html') }}"><i class="fas fa-archive"></i></a>
          
       {% if article.next_article %}
       <a href="{{ SITEURL }}/{{ article.next_article.url}}"><i class="fas fa-chevron-right"></i></a>
