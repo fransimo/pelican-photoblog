@@ -106,7 +106,9 @@
 
       <footer class="post-info">
         <time class="published" datetime="{{ article.date.isoformat() }}">
-          Published: {{ article.locale_date }}
+          Published: {{ article.date.strftime('%d') }}
+            <a href="{{ SITEURL }}/archives/{{ article.date.strftime('%Y/%m/') }}">{{ article.date.strftime('%b') }}</a>
+            <a href="{{ SITEURL }}/archives/{{ article.date.strftime('%Y/') }}">{{ article.date.strftime('%Y') }}</a>   
         </time>
         {% if article.modified %}
         <time class="modified" datetime="{{ article.modified.isoformat() }}">
