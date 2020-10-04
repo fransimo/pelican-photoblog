@@ -73,7 +73,7 @@
             </div>
 
         {% if LINKS %}
-            <div class="block" style="text-align: center;">
+            <div class="block" >
                 <div class="blogroll">
                         <h2>{{ LINKS_WIDGET_NAME | default('links') }}</h2>
                         <ul>
@@ -85,7 +85,7 @@
             </div>
         {% endif %}
         {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
-            <div class="block" style="float: right; text-align: right;">
+            <div class="block" >
                 <div class="social">
                         <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>
                         <ul>

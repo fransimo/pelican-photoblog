@@ -34,7 +34,7 @@ p {
     max-width: 2048px;
     margin-left:auto;
     margin-right:auto;
-    background: #EEE;
+    background: #FFF;
 }
 
 article {}
@@ -50,7 +50,7 @@ article {}
     width: 100%;
     height: auto;
     max-height: 95vh;
-    max-width: 98vw;
+    max-width: 98vw; 
 }
 
 
@@ -68,7 +68,7 @@ article {}
   color: black;
   text-decoration: none;
   font-size: 18px;
-  width: 22%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  width: 21%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
   text-align: center; /* If you want the text to be centered */
 }
 
@@ -91,20 +91,6 @@ article {}
     width: 100%;
     text-align: left; /* If you want the text to be left-aligned on small screens */
   }
-
-  .content .entry-content{
-        float: none;
-        display: block;
-        width: 100%;
-        text-align: left; 
-    }
-
-    .content .post-info{
-        float: none;
-        display: block;
-        width: 100%;
-        text-align: left; 
-    }
 }
 
 .entry-title, .entry-content, .post-info {
@@ -123,24 +109,39 @@ article {}
     text-align: left;
 }
 
+.content .entry-content, .content .post-info {
+    margin: auto;
+    width: 46%;
+}
+
 .content .entry-content{
     float: left;
-    width: 48%;
-    max-width: 500px;
-    text-align: left;
-    margin: auto;
+    text-align: left;  
 }
 
 .content .post-info{
     float: right;
-    width: 48%;
-    max-width: 500px;
     text-align: right;
-    margin: auto;
 }
 
 .content-thumbs {
     padding: 1%;
+}
+
+@media screen and (max-width: 500px) {
+    .content .entry-content{
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: left; 
+    }
+
+    .content .post-info{
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: left; 
+    }
 }
 
 .extras {
@@ -152,10 +153,45 @@ article {}
     float: left;
     width: 33.33%;
     max-width: 500px;
-    text-align: left;
+    text-align: center;
     margin: auto;
 }
 
+@media screen and (max-width: 500px) {
+    .extras .block{
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: left; 
+    }
+}
+
 .credit {
-    padding: 1%;
+    padding: 10px;
+}
+
+
+
+ul.tagcloud {
+  list-style: none;
+    padding: 0;
+}
+
+ul.tagcloud li {
+    display: inline-block;
+}
+
+li.tag-1 {
+    font-size: 150%;
+}
+
+li.tag-2 {
+    font-size: 120%;
+}
+
+/* ... add li.tag-3 etc, as much as needed */
+
+ul.tagcloud .list-group-item span.badge {
+    background-color: grey;
+    color: white;
 }

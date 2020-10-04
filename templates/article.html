@@ -75,18 +75,7 @@
     </section>  
     {% endif %}
 
-    <nav id="article-navigation" class="navbar">
-      {% if article.prev_article %}
-      <a href="{{ SITEURL }}/{{ article.prev_article.url}}" ><i class="fas fa-chevron-left"></i></a>
-      {% endif %}
 
-      <a href="{{ SITEURL }}/"><i class="fas fa-home"></i></a>
-      <a href="{{ SITEURL }}/{{ ARCHIVES_SAVE_AS | default('archives.html') }}"><i class="fas fa-archive"></i></a>
-         
-      {% if article.next_article %}
-      <a href="{{ SITEURL }}/{{ article.next_article.url}}"><i class="fas fa-chevron-right"></i></a>
-      {% endif %}
-    </nav>
 
     <div class="content">
       <header>
@@ -138,5 +127,19 @@
       </footer><!-- /.post-info -->
     </div>
   </article>
+
+  <nav id="article-navigation" class="navbar">
+      {% if article.prev_article %}
+      <a href="{{ SITEURL }}/{{ article.prev_article.url}}" ><i class="fas fa-chevron-left"></i></a>
+      {% endif %}
+
+      <a href="{{ SITEURL }}/"><i class="fas fa-home"></i></a>
+      <a href="{{ SITEURL }}/{{ ARCHIVES_SAVE_AS | default('archives.html') }}"><i class="fas fa-archive"></i></a>
+         
+      {% if article.next_article %}
+      <a href="{{ SITEURL }}/{{ article.next_article.url}}"><i class="fas fa-chevron-right"></i></a>
+      {% endif %}
+  </nav>
+  
 </section>
 {% endblock %}
