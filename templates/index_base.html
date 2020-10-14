@@ -8,7 +8,10 @@
 <ol id="post-list">
 {% for article in articles_page.object_list %}
     <a href="{{ SITEURL }}/{{ article.url }}">
-        <img alt="{{ article.title|striptags }}, {{ article.locale_date }}" src="{{ article.image }}" class="image-process-thumb-square" />
+        <picture>
+          <img class="image-process-article-pict-thumb lazyload" src="{{ article.image }}"
+               alt="{{ article.title|striptags }}" />
+        </picture>
     </a>
 {% endfor %}
 </ol><!-- /#posts-list -->
