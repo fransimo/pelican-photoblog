@@ -128,6 +128,15 @@ article {}
     padding: 1%;
 }
 
+/* https://stackoverflow.com/questions/11552380/how-to-automatically-crop-and-center-an-image */
+
+.image-process-article-pict-thumb {
+    object-fit: cover;
+    object-position: center;
+    width: 8em;
+    height: 8em;
+}
+
 @media screen and (max-width: 500px) {
     .content .entry-content{
         float: none;
