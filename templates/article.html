@@ -32,7 +32,7 @@
 
     {% if article.image %}  
     <section class="main_image">
-      <div itemscope itemtype="http://schema.org/ImageObject">
+      <div itemscope itemtype="http://schema.org/Photograph">
         {% if article.prev_article %}
         <a href="{{ SITEURL }}/{{ article.prev_article.url}}">
         {% endif %}
@@ -57,21 +57,33 @@
         <meta itemprop="dateCreated" content="{{ article.datecreated }}"/>
         <meta itemprop="datePublished" content="{{ article.locale_date }}"/>
 
-        {% if article.location %}
-        <meta itemprop="contentLocation" content="{{ article.location }}"/>       
-        {% endif %}  
+        {% if article.location or article.gpslatitude %}
+        <div itemprop="contentLocation" itemscope itemtype="https://schema.org/Place">
+          {% if article.location %}
+          <meta itemprop="name" content="{{ article.location }}"/>
+          {% endif %}
+          {% if article.gpslatitude %}
+            <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+                <meta itemprop="latitude" content="{{ article.gpslatitude }}" />
+                <meta itemprop="longitude" content="{{ article.gpslongitude }}" />
+            </div>
+          {% endif %}
+        </div>
+        {% endif %}
 
         {% for author in article.authors %}
         <meta itemprop="author" content="{{ author }}" />
         {% endfor %}
+
+        {% if article.tags %}
+        <meta itemprop="author" content="
+            {% for tag in article.tags %}
+                {{ tag }},
+            {% endfor %}">
+        {% endif %}
       </div>
       
-      {% if article.gpslatitude %}
-        <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
-            <meta itemprop="latitude" content="{{ article.gpslatitude }}" />
-            <meta itemprop="longitude" content="{{ article.gpslongitude }}" />
-        </div>
-      {% endif %}      
+
     </section>  
     {% endif %}
 
