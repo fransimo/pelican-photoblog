@@ -52,8 +52,8 @@
         {% endif %}
 
         <!-- https://schema.org/ImageObject -->
-        <meta itemprop="contentUrl" content="{{ article.image }}"/>
-        <meta itemprop="caption" content="{{ article.title|striptags }}"/>
+        <meta itemprop="image" content="{{ article.image }}"/>
+        <meta itemprop="name" content="{{ article.title|striptags }}"/>
         <meta itemprop="dateCreated" content="{{ article.datecreated }}"/>
         <meta itemprop="datePublished" content="{{ article.locale_date }}"/>
 
@@ -76,7 +76,7 @@
         {% endfor %}
 
         {% if article.tags %}
-        <meta itemprop="author" content="
+        <meta itemprop="keywords" content="
             {% for tag in article.tags %}
                 {{ tag }},
             {% endfor %}">
