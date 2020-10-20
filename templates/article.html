@@ -51,7 +51,7 @@
         </a>
         {% endif %}
 
-        <!-- https://schema.org/ImageObject -->
+        <!-- http://schema.org/Photograph -->
         <meta itemprop="image" content="{{ article.image }}"/>
         <meta itemprop="name" content="{{ article.title|striptags }}"/>
         <meta itemprop="dateCreated" content="{{ article.datecreated }}"/>
@@ -72,7 +72,7 @@
         {% endif %}
 
         {% for author in article.authors %}
-        <meta itemprop="author" content="{{ author }}" />
+        <meta itemprop="author" content="{{ author|escape }}" />
         {% endfor %}
 
         {% if article.tags %}
